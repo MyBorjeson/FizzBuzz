@@ -30,8 +30,38 @@ describe("The FizzBuzz program", function() {
 
         var number = numbers[i];
 
-        if(number % 3 === 0) {
-            expect(result[i]).toBe("Fizz");
+        if(number % 3 === 0 && number % 5 !== 0) {
+            expect(result[i]).toBe("Fizz", "for number " + number);
+        }
+      }
+  });
+
+  it("prints buzz for all numbers divisible by 5", function() {
+      var numbers = fizzBuzz.generateNumbers();
+
+      var result = fizzBuzz.play(numbers);
+
+      for(var i=0;i<100;i++){
+
+        var number = numbers[i];
+
+        if(number % 5 === 0 && number % 3 !== 0) {
+            expect(result[i]).toBe("Buzz", "for number " + number);
+        }
+      }
+  });
+
+  it("prints Fizz Buzz for numbers divisble by 3 and 5", function() {
+      var numbers = fizzBuzz.generateNumbers();
+
+      var result = fizzBuzz.play(numbers);
+
+      for(var i=0;i<100;i++){
+
+        var number = numbers[i];
+
+        if(number % 3 === 0 && number % 5 === 0) {
+            expect(result[i]).toBe("Fizz Buzz");
         }
       }
   });
